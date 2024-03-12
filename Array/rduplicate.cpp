@@ -74,7 +74,7 @@ void removeDuplicate(int arr[],int size){
     vector<int>vec;
 
     while(second < size){
-        if(arr[first] != arr[second] !=0){
+        if(arr[first] != arr[second] ){
             vec.push_back(arr[first]);
 
         }

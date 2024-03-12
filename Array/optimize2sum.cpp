@@ -35,20 +35,24 @@
 using namespace std;
 
 vector<int> result(int arr[],int size, int sum){
-    sort(arr,arr+size);
+    vector<pair<int,int>>v;
+    for(int i = 0; i < size; i++){
+        v.push_back({arr[i],i});
+    }
+    sort(v.begin(),v.end());
     
     
     int start = 0;
-    int end  = size-1;
+    int end  =v.size()-1;
     vector<int>vec;
 
     while(start < end){
-            if(sum == (arr[start] + arr[end])){
-                vec.push_back(start);
-                vec.push_back(end);
+            if(sum == (v[start].first + v[end].first)){
+                vec.push_back(v[start].second);
+                vec.push_back(v[end].second);
                 return vec;
             }
-            else if(sum > (arr[start] + arr[end])){
+            else if(sum > (v[start].first + v[end].first)){
                 start++;
                 
             }
@@ -98,10 +102,7 @@ int main(){
     
 
     vector<int> vec = result(arr,size,sum);
-    cout<<"Array Elements  After Sorting"<<endl;
-    for(int i = 0; i < size; i++){
-        cout<<arr[i]<<" ";
-    }
+    
     cout<<endl;
     cout << vec[0]<<" "<<vec[1]<<endl;
     

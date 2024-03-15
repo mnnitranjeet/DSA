@@ -14,6 +14,7 @@ using namespace std;
 
 
 void minMaxElement(int arr[],int size){
+    int count = 0;
     int min,max;
     if(arr[0] > arr[1]){
         max = arr[0];
@@ -27,13 +28,23 @@ void minMaxElement(int arr[],int size){
     for(int i = 2; i < size; i++){
         if(arr[i] < min){
             min = arr[i];
+            count++;
         }
-        if(arr[i] > max){
-            max = arr[i];
+        else{
+            if(arr[i] > max){
+                max = arr[i];
+                count++;
+            
+            }
         }
+
+        
+        
+    
     }
     cout<<"Minimum Element of the Array is  "<<" "<<min<<endl;
     cout<<"Maximum Element of the Array is  "<<" "<<max<<endl;
+    cout<<endl<<count<<endl;
 }
 
 
@@ -47,5 +58,6 @@ int main(){
     for(int i = 0; i < size; i++){
         cin>>arr[i];
     }
+    
     minMaxElement(arr,size);
 }
